@@ -9,7 +9,7 @@ services:
     - MONGO_DB_USERNAME=vkpatilhsit
     - MONGO_DB_PASSWORD=passw0rd1
     ports:
-      - 7000:9000
+      - 7000:8080
     working_dir: /opt/app
     depends_on:
       - mongo

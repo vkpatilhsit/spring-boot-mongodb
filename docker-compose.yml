@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   springboot:
-    image: vkpatilhsit/spring-boot-application:1
+    image: vkpatilhsit/spring-boot-mongo-docker-jenkins-application:1
     restart: always # This will be ignored if we deploy in docker swarm
     environment:
     - MONGO_DB_HOSTNAME=mongo

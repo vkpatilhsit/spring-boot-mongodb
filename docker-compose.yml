@@ -2,12 +2,13 @@ version: '3.1'
 
 services:
   springboot:
-    image: dockerhandson/spring-boot-mongo:latest
-    restart: always # This will be ignored if we deploy in docker swarm
+    image: vkpatilhsit/spring-boot-mongo-docker-application:latest
+    container_name: springboot
+    restart: always
     environment:
     - MONGO_DB_HOSTNAME=mongo
-    - MONGO_DB_USERNAME=devdb
-    - MONGO_DB_PASSWORD=devdb123
+    - MONGO_DB_USERNAME=vkpatilhsit
+    - MONGO_DB_PASSWORD=passw0rd1
     ports:
       - 8080:8080
     working_dir: /opt/app
@@ -15,31 +16,23 @@ services:
       - mongo
     networks:
     - springappnetwork  
-    deploy:  # This will be considered only in docker swarm.
-      replicas: 2
-      update_config:
-        parallelism: 1
-        delay: 20s
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-        max_attempts: 5
-
+    
   mongo:
     image: mongo
-    environment:
-    - MONGO_INITDB_ROOT_USERNAME=devdb
-    - MONGO_INITDB_ROOT_PASSWORD=devdb123
-    volumes:
-      - mongodb:/data/db
+    container_name: mongo
     restart: always
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=vkpatilhsit
+    - MONGO_INITDB_ROOT_PASSWORD=passw0rd1
+    volumes:
+      - mongodbvol:/data/db
+    
     networks:
     - springappnetwork
     
 volumes:
-  mongodb:
-    external: true
-    
+  mongodbvol:
+        
 networks:
   springappnetwork:
-    external: true
+    

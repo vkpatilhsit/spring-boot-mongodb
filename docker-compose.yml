@@ -1,32 +1,31 @@
 version: '3.1'
+
 services:
   springboot:
-    image: vkpatilhsit/spring-boot-mongo-docker-application:latest
-    restart: always
+    image: vkpatilhsit/spring-boot-application:1
+    restart: always # This will be ignored if we deploy in docker swarm
     environment:
     - MONGO_DB_HOSTNAME=mongo
     - MONGO_DB_USERNAME=vkpatilhsit
     - MONGO_DB_PASSWORD=passw0rd1
     ports:
-    - 8080:8080
+      - 8080:8080
     working_dir: /opt/app
     depends_on:
-    - mongo
+      - mongo
     networks:
-    - springappnetwork  
+    - springappnetwork
   mongo:
     image: mongo
-    container_name: mongo
-    restart: always
     environment:
     - MONGO_INITDB_ROOT_USERNAME=vkpatilhsit
     - MONGO_INITDB_ROOT_PASSWORD=passw0rd1
     volumes:
-    - mongodbvol:/data/db
+      - mongodb:/data/db
+    restart: always
     networks:
     - springappnetwork
 volumes:
-  mongodbvol:
+  mongodb:
 networks:
   springappnetwork:
-    

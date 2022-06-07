@@ -1,22 +1,19 @@
 version: '3.1'
-
 services:
   springboot:
     image: vkpatilhsit/spring-boot-mongo-docker-application:latest
-    container_name: springboot
     restart: always
     environment:
     - MONGO_DB_HOSTNAME=mongo
     - MONGO_DB_USERNAME=vkpatilhsit
     - MONGO_DB_PASSWORD=passw0rd1
     ports:
-      - 8080:8080
+    - 8080:8080
     working_dir: /opt/app
     depends_on:
-      - mongo
+    - mongo
     networks:
     - springappnetwork  
-    
   mongo:
     image: mongo
     container_name: mongo
@@ -25,14 +22,11 @@ services:
     - MONGO_INITDB_ROOT_USERNAME=vkpatilhsit
     - MONGO_INITDB_ROOT_PASSWORD=passw0rd1
     volumes:
-      - mongodbvol:/data/db
-    
+    - mongodbvol:/data/db
     networks:
     - springappnetwork
-    
 volumes:
   mongodbvol:
-        
 networks:
   springappnetwork:
     

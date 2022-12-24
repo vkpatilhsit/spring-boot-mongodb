@@ -36,3 +36,9 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: 
+- task: KubernetesManifest@0
+  inputs:
+    action: 'deploy'
+    kubernetesServiceConnection: 'vijayakumarakscluster-default-1706'
+    namespace: 'default'
+    manifests: 'springBootMongo.yml'

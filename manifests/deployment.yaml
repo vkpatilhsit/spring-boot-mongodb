@@ -13,7 +13,7 @@ spec:
         name: javawebapp
     spec:
       containers:
-      - image: dockerhandson/java-web-app
+      - image: vkpatilhsit/spring-boot-application:2
         name: javawebapp
         ports:
         - name: javawebapp

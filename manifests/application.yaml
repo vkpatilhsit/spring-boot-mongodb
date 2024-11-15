@@ -13,7 +13,8 @@ spec:
     repoURL: https://github.com/vkpatilhsit/spring-boot-mongodb.git
     targetRevision: master
   syncPolicy:
-  - CreateNamespace=true
-  automated:
-    prune: true
-    selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

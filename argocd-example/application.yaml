@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: myapp
     server: https://kubernetes.default.svc
-  project: 'my-applications'
+  project: default
   source:
     path: manifests
     repoURL: https://github.com/vkpatilhsit/spring-boot-mongodb.git

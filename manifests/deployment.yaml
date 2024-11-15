@@ -13,7 +13,7 @@ spec:
         name: javawebapp
     spec:
       containers:
-      - image: vkpatilhsit/spring-boot-application:2
+      - image: vkpatilhsit/spring-boot-application:1
         name: javawebapp
         ports:
         - name: javawebapp
